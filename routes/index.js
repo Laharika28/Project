@@ -3,6 +3,7 @@ const app = express();
 const ejs = require("ejs");
 const bodyParser = require("body-parser"); 
 const dotenv = require('dotenv');
+const url = require("url");
 dotenv.config({ path: './config/config.env' });
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,7 +20,13 @@ app.get("/log",ensureAuth, async(req,res)=>{
     if(userInfo.userType == "Teacher"){
         res.render('teacher',{userinfo : userInfo});
     }else{
-        res.render('student',{userinfo : userInfo});
+        // res.render('student',{userinfo : userInfo});
+        res.redirect(url.format({
+            pathname:"/student/login",
+            query:{
+                userinfo:userInfo
+            }
+      }));
     }
 });
 

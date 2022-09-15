@@ -83,6 +83,11 @@
     float: right;
 }
 
+.student-quiz-card{
+    width: 18rem;
+    align-items: center;
+}
+
 @media(max-width:576px){
     .question{
         width: 100%;

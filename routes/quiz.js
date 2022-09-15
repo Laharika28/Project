@@ -40,9 +40,9 @@ const QuizSchema = new mongoose.Schema({
         required: true
     },
     questionDetails:[questionSchema]
-});
+  });
 
-const Quiz = mongoose.model("Quiz",QuizSchema);
+  const Quiz = mongoose.model("Quiz",QuizSchema);
 
 app.post("/createQuiz",(req,res)=>{
     var quizName = req.body.quizName;
@@ -105,6 +105,32 @@ app.post("/question/delete",(req,res)=>{
           res.redirect("/createQuiz/" + quizName);
         }
       });
+});
+
+app.get("/student/login",(req,res)=>{
+  var passedVariable = req.query.userinfo;
+
+  Quiz.find({},(err,foundQuiz)=>{
+    if(!err){
+      res.render("student",{
+        userinfo: passedVariable,
+        quizList : foundQuiz
+      });
+    }
+  });
+});
+
+app.post("/student/quizstart",(req,res)=>{
+  const quizName = req.body.quizName;
+  Quiz.findOne({quizName: quizName},(err,foundQuiz)=>{
+    if(!err){
+      res.render("quizStart",{
+        quizId : foundQuiz._id,
+        quizName : foundQuiz.quizName,
+        questions : foundQuiz.questionDetails
+      });
+    }
+  });
 });
 
 module.exports=app;
