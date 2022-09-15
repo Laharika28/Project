@@ -35,6 +35,5 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(require("./routes/index"));
-app.use(require("./routes/quiz"));
 app.use('/auth', require('./routes/auth'));
 app.listen(PORT,console.log(`listening at ${PORT}`));

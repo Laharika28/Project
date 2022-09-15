@@ -27,6 +27,11 @@
                     <div class="card-body student-quiz-card-body" >
                       <h5 class="card-title"> <%= quiz.quizName %> </h5>
                       <form action="/student/quizstart" method="post">
+                        <input type="hidden" name="index" value="0">
+                        <% var n = quiz.questionDetails.length %>
+                        <input type="hidden" name="quizLength" value="<%= n %>">
+                        <input type="hidden" name="quizId" value="<%= quiz._id %>">
+                        <input type="hidden" name="studentId" value="<%= userinfo._id %>">
                         <button name="quizName" value="<%= quiz.quizName %>" class="btn btn-primary"> Start Quiz </button>
                       </form>
                     </div>
