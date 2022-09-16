@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const User = require('../models/User');
 const app = require('../routes');
-dotenv.config({ path: './config/config.env' });
+dotenv.config({ path: './.env' });
 
 var typeOfUser="";
 
