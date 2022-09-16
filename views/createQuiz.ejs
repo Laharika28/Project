@@ -87,17 +87,16 @@
                         <textarea name="questionName" placeholder="Question" rows="1" cols="60" class="pl-2" required="true"></textarea>
                     </div>
                     <div class="mcq-content">
-                        <input type="text" name="optionA" placeholder="Option A"><br>
-                        <input type="text" name="optionB" placeholder="Option B"><br>
-                        <input type="text" name="optionC" placeholder="Option C"><br>
-                        <input type="text" name="optionD" placeholder="Option D"><br>
-
+                            <input id="optionA" onChange="setOptions()" type="text" name="optionA" placeholder="Option A"><br>
+                            <input id="optionB" onChange="setOptions()" type="text" name="optionB" placeholder="Option B"><br>
+                            <input id="optionC" onChange="setOptions()" type="text" name="optionC" placeholder="Option C"><br>
+                            <input id="optionD" onChange="setOptions()" type="text" name="optionD" placeholder="Option D"><br>
                         <label for="ansValue">Choose the correct Answer:</label>
                         <select id="ansValue" name="ansValue">
-                            <option value="optionA">Option A</option>
-                            <option value="optionB">Option B</option>
-                            <option value="optionC">Option C</option>
-                            <option value="optionD">Option D</option>
+                            <option id="option_A"></option>
+                            <option id="option_B"></option>
+                            <option id="option_C"></option>
+                            <option id="option_D"></option>
                         </select>
                     </div>
 
@@ -133,7 +132,26 @@
                 short_ans_content.style.display = "block";
             }
         }
-
+        
+        function setOptions(){
+            var a = document.getElementById("optionA").value;
+            var b = document.getElementById("optionB").value;
+            var c = document.getElementById("optionC").value;
+            var d = document.getElementById("optionD").value;
+            var a1 = document.getElementById("option_A");
+            a1.innerHTML = a;
+            a1.value = a;
+            var b1 = document.getElementById("option_B");
+            b1.innerHTML = b;
+            b1.value = b;
+            var c1 = document.getElementById("option_C");
+            c1.innerHTML = c;
+            c1.value = c;
+            var d1 = document.getElementById("option_D");
+            d1.innerHTML = d;
+            d1.value = d;
+        }
+        
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
